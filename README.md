@@ -17,16 +17,16 @@ Codex 全局协作规则与自创技能，用于版本管理、跨设备迁移�
 
 ### 1. 获取仓库
 
-新设备需要先安装 Codex、Git 和 GitHub CLI（`gh`），并拥有本仓库的访问权限。仓库为私有时，必须登录有权限的 GitHub 账户才能下载。
+新设备需要先安装 Codex 和 Git。本仓库公开，下载不需要登录 GitHub；向本仓库推送修改仍需要相应的写入权限及 GitHub 身份认证。
 
 在准备存放仓库的目录打开终端，执行：
 
 ```sh
-gh auth login
-gh auth setup-git
-gh repo clone Yuuu-san/yuuu-san-skills
+git clone https://github.com/Yuuu-san/yuuu-san-skills.git
 cd yuuu-san-skills
 ```
+
+需要从新设备推送更新时，可安装 GitHub CLI（`gh`），运行 `gh auth login` 和 `gh auth setup-git` 配置认证；也可以使用已经配置好的 SSH 或 Git 凭据管理器。
 
 如果已经下载过仓库，在仓库目录执行：
 
@@ -157,3 +157,9 @@ git status --short --branch
 仅收录通用全局规则与圆桌技能，不迁移账号登录态、API 配置、聊天记录、个人记忆或其他运行数据。本仓库不提供自动安装或自动同步脚本。
 
 安装位置已依据上述官方文档核对；尚未在其他设备实际安装验证，Windows 与 WSL 的步骤也尚未在目标环境实测。
+
+## 许可证
+
+本仓库的全局规则、圆桌技能、配套配置及说明文档采用 [MIT License](LICENSE)。允许使用、修改、商用和再分发，复制或分发本仓库内容时须按许可证要求保留版权与许可声明；无需公开衍生作品的源码。
+
+版权声明使用公开账号名 `Yuuu-san`。技能中列出的外部参考项目遵循各自的许可证，本仓库的 MIT 授权不替代它们的授权。
