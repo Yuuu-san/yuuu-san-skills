@@ -1,16 +1,19 @@
 # yuuu-san-skills
 
-Codex 全局协作规则与自创技能，用于版本管理、跨设备迁移及后续分享。
+Codex 全局协作规则、自创技能与选装的上游技能，用于版本管理、跨设备迁移及分享。
 
 ## 内容
 
 - `codex/AGENTS.md`：全局协作规则。
-- [雨伞圆桌](skills/yuuu-san-roundtable/SKILL.md)：多代理头脑风暴、交叉审查及配套参考文件。
+- [雨伞圆桌](skills/yuuu-san-roundtable/SKILL.md) 支持多代理排障、头脑风暴、决策审核、文档与代码审查。
+- [雨伞技能导航](skills/yuuu-san-skill-router/SKILL.md) 按当前可用技能与项目规则，推荐适合的技能或执行已授权的任务。
 - [雨伞Vtuber人设策划](skills/yuuu-san-vtuberPersona/SKILL.md)：虚拟主播的人物、声音方向、口头禅、分赛道内容与独立角色推演。
+
+`skills/` 还收录 `diagnosing-bugs`、`tdd`、`domain-modeling`、`handoff`、`codebase-design`、`grill-with-docs`、`grilling`、`writing-for-agents` 和 `improve-codebase-architecture`。这九项保持上游版本原样。[Matt Pocock Skills `5863806`](https://github.com/mattpocock/skills/tree/5863806dd4e15c63174bee4e7515a4256792ecfa)
 
 ## 当前状态
 
-本仓库从本机现用文件整理建立。全局规则已去除个人称呼和项目专用章节，保留初学者沟通偏好；圆桌技能和人设策划技能按各自完整目录收录。人设策划只包含可复用的方法与合成测试题，真实主播资料和个案记录留在各自工作目录。项目专用实现继续由对应项目维护。
+本仓库从本机现用文件整理建立。全局规则已去除个人称呼和项目专用章节，保留初学者沟通偏好。技能按各自完整目录收录。人设策划只包含可复用的方法与合成测试题，真实主播资料和个案记录留在各自工作目录。项目专用实现继续由对应项目维护。
 
 仓库文件与本机现用文件是独立副本，编辑任一处不会自动同步另一处。
 
@@ -85,7 +88,9 @@ git pull --ff-only origin main
 | --- | --- | --- |
 | `codex/AGENTS.md` 文件 | `~/.codex/AGENTS.md` | `%USERPROFILE%\.codex\AGENTS.md` |
 | `skills/yuuu-san-roundtable/` 整个目录 | `~/.agents/skills/yuuu-san-roundtable/` | `%USERPROFILE%\.agents\skills\yuuu-san-roundtable\` |
+| `skills/yuuu-san-skill-router/` 整个目录 | `~/.agents/skills/yuuu-san-skill-router/` | `%USERPROFILE%\.agents\skills\yuuu-san-skill-router\` |
 | `skills/yuuu-san-vtuberPersona/` 整个目录 | `~/.agents/skills/yuuu-san-vtuberPersona/` | `%USERPROFILE%\.agents\skills\yuuu-san-vtuberPersona\` |
+| `skills/` 下所选的上游技能目录 | `~/.agents/skills/` 下的同名目录 | `%USERPROFILE%\.agents\skills\` 下的同名目录 |
 
 全局规则的位置以 Codex 实际使用的 `CODEX_HOME` 为准；未自定义时才使用上表的 `.codex`。如果该目录存在 `AGENTS.override.md`，Codex 会优先使用它；先核对其用途，不能仅复制 `AGENTS.md` 就认为规则已经生效。
 
@@ -101,7 +106,7 @@ Windows 原生 Codex 与 WSL 内的 Codex 使用各自的用户目录；使用�
 
 1. 先查看并备份目标设备上本次要更新的规则文件或技能目录。只安装人设策划时，仅处理同名技能目录；无需安装或覆盖全局规则、圆桌技能。备份放到仓库及技能扫描目录之外，例如在“文稿”或“文档”中建立带日期的备份文件夹。需要保留的本机偏好先合并，不能直接丢弃。
 2. 如需安装全局规则，将仓库的 `codex/AGENTS.md` 复制到上表的规则位置；缺少父目录时先创建。目标处保留一个 `AGENTS.md` 文件。
-3. 将本次需要的 `skills/yuuu-san-roundtable` 或 `skills/yuuu-san-vtuberPersona` **整个目录**复制到技能父目录下。已有旧技能时，先把旧目录完整移到备份处，再复制新目录，避免旧版本已移除的文件残留。不要只复制 `SKILL.md`，也不要把新目录套在旧目录里面。
+3. 将 `skills/` 下本次需要的技能**整个目录**复制到技能父目录下。已有旧技能时，先把旧目录完整移到备份处，再复制新目录，避免旧版本已移除的文件残留。不要只复制 `SKILL.md`，也不要把新目录套在旧目录里面。使用 `grill-with-docs` 时同时安装 `grilling` 和 `domain-modeling`。
 
 圆桌技能的完整结构为：
 
@@ -112,7 +117,10 @@ yuuu-san-roundtable/
 │   └── openai.yaml
 └── references/
     ├── brainstorming.md
-    └── cross-review.md
+    ├── cross-review.md
+    ├── debugging.md
+    ├── decision-review.md
+    └── document-review.md
 ```
 
 人设策划技能的完整结构为：
@@ -136,7 +144,7 @@ yuuu-san-vtuberPersona/
 安装后新建一个 Codex 会话。技能未出现时重启 Codex，再检查安装位置。
 
 - 如果安装了全局规则，请 Codex“列出当前加载的全局规则来源，确认是否包含初学者沟通偏好”，并核对来源是目标设备上安装的文件。
-- 在技能列表中确认能找到本次安装的 `yuuu-san-roundtable` 或 `yuuu-san-vtuberPersona`，并核对实际文件路径。圆桌可用“请用 $yuuu-san-roundtable 比较两个简单方案，完成讨论即可，不修改文件”试用；人设策划可用前面的三个示例之一试用。
+- 在技能列表中确认能找到本次安装的技能，并核对实际文件路径。圆桌可用“请用 $yuuu-san-roundtable 比较两个简单方案，只讨论”试用。技能导航可用“用 $yuuu-san-skill-router 推荐适合排查偶发卡顿的技能，只给建议”试用。人设策划可用前面的三个示例之一试用。
 
 圆桌运行需要当前环境提供真实子代理能力；能找到技能不等于该环境能完成多代理讨论。没有该能力时，应明确说明限制，不能把单代理结果称为已完成圆桌。
 
@@ -165,7 +173,7 @@ git pull --ff-only origin main
 
 先确认本机正在使用的技能目录，可能位于 `.agents/skills/` 或旧环境的 `.codex/skills/`。
 
-将本机正式文件同步到仓库中对应的 `skills/yuuu-san-roundtable/` 或 `skills/yuuu-san-vtuberPersona/`，包括 `SKILL.md`、`agents/`、`references/` 及实际新增的必要文件。要完整替换时，先将仓库中的旧技能目录移到仓库外备份，再复制本机版本；不要把旧备份、运行日志、临时文件或凭据一起带进仓库。
+将本机正式文件同步到仓库中对应的 `skills/<技能名>/`，包括 `SKILL.md`、`agents/`、`references/` 及实际新增的必要文件。要完整替换时，先将仓库中的旧技能目录移到仓库外备份，再复制本机版本；不要把旧备份、运行日志、临时文件或凭据一起带进仓库。更新上游技能时同时核对来源提交和许可证。
 
 只同步本次确实修改的技能，不复制整个技能父目录；真实主播材料、测试原始记录和项目专用实现不加入本仓库。只改了规则或只改了一个技能时，仅执行对应部分。
 
@@ -175,7 +183,7 @@ git pull --ff-only origin main
 
 ```sh
 git status --short
-git diff -- codex/AGENTS.md skills/yuuu-san-roundtable/ skills/yuuu-san-vtuberPersona/
+git diff -- codex/AGENTS.md skills/
 ```
 
 `git diff` 不显示尚未被 Git 跟踪的新文件内容；`git status` 出现新增文件时，也要打开查看。确认没有个人信息、本机路径、凭据和项目专用内容，再暂存指定范围：
@@ -211,7 +219,7 @@ git status --short --branch
 
 ## 收录边界与验证范围
 
-仅收录通用全局规则、圆桌技能、人设策划技能及其必要配置与参考。不迁移账号登录态、API 配置、真实主播资料、聊天记录、个人记忆或其他运行数据。本仓库按技能源码提供手动安装方式，不含自动安装/同步脚本或插件打包。
+仓库收录通用全局规则、上述自创技能及选装的上游技能，包含各技能的必要配置、参考和脚本。不迁移账号登录态、API 配置、真实主播资料、聊天记录、个人记忆或其他运行数据。本仓库按技能源码提供手动安装方式，不含自动安装/同步脚本或插件打包。
 
 安装位置已依据上述官方文档核对；尚未在其他设备实际安装验证，Windows 与 WSL 的步骤也尚未在目标环境实测。
 
@@ -221,6 +229,8 @@ git status --short --branch
 
 ## 许可证
 
-本仓库的全局规则、圆桌技能、人设策划技能、配套配置及说明文档采用 [MIT License](LICENSE)。允许使用、修改、商用和再分发，复制或分发本仓库内容时须按许可证要求保留版权与许可声明；无需公开衍生作品的源码。
+本仓库的全局规则、自创技能、配套配置及说明文档采用 [MIT License](LICENSE)。允许使用、修改、商用和再分发，复制或分发本仓库内容时须按许可证要求保留版权与许可声明；无需公开衍生作品的源码。
+
+九个 Matt Pocock 技能沿用原作者的 MIT 许可证和版权声明。单独复制或分发这些技能时附上该声明。[Matt Pocock Skills 许可证](LICENSE-mattpocock-skills)
 
 版权声明使用公开账号名 `Yuuu-san`。技能中列出的外部参考项目遵循各自的许可证，本仓库的 MIT 授权不替代它们的授权。
