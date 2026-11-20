@@ -20,7 +20,7 @@ description: "用户明确要求用圆桌或多代理排障、头脑风暴、复
 | 检查执行方案、路书或规格是否准确、可实施、可验收 | [文档审查](references/document-review.md) |
 | 核对代码改动是否符合规格和工程规范 | [代码交叉审查](references/cross-review.md) |
 
-- “用圆桌 debug 某问题”进入排障闭环，包含获授权的本地修复与复验。“只定位”“只审查”交付核实结果和建议。文档写入、重构或业务方案变更、远程及生产操作遵守当次授权和项目规则。已获授权的步骤连续推进。
+- “用圆桌 debug 某问题”进入排障闭环。先建立能检出原症状的反馈循环，再组织成员独立提出和验证原因，最后完成获授权的修复与复验。“只定位”“只审查”交付核实结果和建议。文档写入、重构或业务方案变更、远程及生产操作遵守当次授权和项目规则。已获授权的步骤连续推进。
 - 使用环境实际提供的子代理与通信工具，不依赖特定工具名、不创建无请求的侧栏聊天、不安装其他框架。默认继承当前模型；用户指定模型时核对实际可用性，不静默替换，也不声称兼容所有未来模型。
 
 ## 会前说明与角色
@@ -74,7 +74,7 @@ description: "用户明确要求用圆桌或多代理排障、头脑风暴、复
 
 以下为机制参考。
 
-- [Matt Pocock Skills](https://github.com/mattpocock/skills/tree/5863806dd4e15c63174bee4e7515a4256792ecfa/skills/engineering) 提供可复现的排障循环，以及规格、工程规范两条独立审查线。
+- [Matt Pocock Skills](https://github.com/mattpocock/skills/tree/5863806dd4e15c63174bee4e7515a4256792ecfa/skills/engineering) 提供规格与工程规范两条审查线。排障流程吸收 `diagnosing-bugs` 的反馈循环、假设证伪和回归验证。
 - [Superpowers](https://github.com/obra/superpowers)：分别核对需求和实现、检查真实完成证据。
 - [LLM Council](https://github.com/karpathy/llm-council)：独立首轮、隐去作者标签互评。
 - [Council of High Intelligence](https://github.com/0xNyk/council-of-high-intelligence)：观点修订理由、保留分歧和推翻条件；不采用强制异议、加权投票或模拟补位。

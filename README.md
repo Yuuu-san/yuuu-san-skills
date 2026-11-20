@@ -6,6 +6,7 @@ Codex 全局协作规则、自创技能与选装的上游技能，用于版本�
 
 - `codex/AGENTS.md`：全局协作规则。
 - [雨伞圆桌](skills/yuuu-san-roundtable/SKILL.md) 支持多代理排障、头脑风暴、决策审核、文档与代码审查。
+- [雨伞循环](skills/yuuu-san-loop/SKILL.md) 沿用圆桌，每轮独立复查当前实现及修复结果，直到通过验收。
 - [雨伞技能导航](skills/yuuu-san-skill-router/SKILL.md) 按当前可用技能与项目规则，推荐适合的技能或执行已授权的任务。
 - [雨伞Vtuber人设策划](skills/yuuu-san-vtuberPersona/SKILL.md)：虚拟主播的人物、声音方向、口头禅、分赛道内容与独立角色推演。
 
@@ -88,11 +89,14 @@ git pull --ff-only origin main
 | --- | --- | --- |
 | `codex/AGENTS.md` 文件 | `~/.codex/AGENTS.md` | `%USERPROFILE%\.codex\AGENTS.md` |
 | `skills/yuuu-san-roundtable/` 整个目录 | `~/.agents/skills/yuuu-san-roundtable/` | `%USERPROFILE%\.agents\skills\yuuu-san-roundtable\` |
+| `skills/yuuu-san-loop/` 整个目录 | `~/.agents/skills/yuuu-san-loop/` | `%USERPROFILE%\.agents\skills\yuuu-san-loop\` |
 | `skills/yuuu-san-skill-router/` 整个目录 | `~/.agents/skills/yuuu-san-skill-router/` | `%USERPROFILE%\.agents\skills\yuuu-san-skill-router\` |
 | `skills/yuuu-san-vtuberPersona/` 整个目录 | `~/.agents/skills/yuuu-san-vtuberPersona/` | `%USERPROFILE%\.agents\skills\yuuu-san-vtuberPersona\` |
 | `skills/` 下所选的上游技能目录 | `~/.agents/skills/` 下的同名目录 | `%USERPROFILE%\.agents\skills\` 下的同名目录 |
 
 全局规则的位置以 Codex 实际使用的 `CODEX_HOME` 为准；未自定义时才使用上表的 `.codex`。如果该目录存在 `AGENTS.override.md`，Codex 会优先使用它；先核对其用途，不能仅复制 `AGENTS.md` 就认为规则已经生效。
+
+安装雨伞循环时，将它与雨伞圆桌放在同一个技能父目录下。可用「请用 $yuuu-san-loop 复查并修复这次改动」启动。
 
 新设备按上表安装所需技能。已有设备可能仍从 `~/.codex/skills/` 加载技能：先在 Codex 中查看该技能的实际文件路径，更新现有位置即可；不要同时在新旧位置放置两份同名技能。若要迁移，先备份并移出旧副本，再安装到新位置，最后确认技能只出现一次。
 
