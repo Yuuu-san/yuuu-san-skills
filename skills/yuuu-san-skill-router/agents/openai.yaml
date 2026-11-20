@@ -1,4 +1,4 @@
 interface:
-  display_name: "雨伞技能导航"
+  display_name: "雨伞导航"
   short_description: "按当前可用的技能匹配任务，给出使用顺序或直接完成已授权的工作"
   default_prompt: "用 $yuuu-san-skill-router 为下面的任务选技能并执行。"

@@ -7,7 +7,7 @@ Codex 全局协作规则、自创技能与选装的上游技能，用于版本�
 - `codex/AGENTS.md`：全局协作规则。
 - [雨伞圆桌](skills/yuuu-san-roundtable/SKILL.md) 支持多代理排障、头脑风暴、决策审核、文档与代码审查。
 - [雨伞循环](skills/yuuu-san-loop/SKILL.md) 沿用圆桌，每轮独立复查当前实现及修复结果，直到通过验收。
-- [雨伞技能导航](skills/yuuu-san-skill-router/SKILL.md) 按当前可用技能与项目规则，推荐适合的技能或执行已授权的任务。
+- [雨伞导航](skills/yuuu-san-skill-router/SKILL.md) 默认用雨伞循环排查 Bug，用雨伞圆桌讨论方向及复查方案。
 - [雨伞Vtuber人设策划](skills/yuuu-san-vtuberPersona/SKILL.md)：虚拟主播的人物、声音方向、口头禅、分赛道内容与独立角色推演。
 
 `skills/` 还收录 `diagnosing-bugs`、`tdd`、`domain-modeling`、`handoff`、`codebase-design`、`grill-with-docs`、`grilling`、`writing-for-agents` 和 `improve-codebase-architecture`。这九项保持上游版本原样。[Matt Pocock Skills `5863806`](https://github.com/mattpocock/skills/tree/5863806dd4e15c63174bee4e7515a4256792ecfa)
@@ -148,7 +148,7 @@ yuuu-san-vtuberPersona/
 安装后新建一个 Codex 会话。技能未出现时重启 Codex，再检查安装位置。
 
 - 如果安装了全局规则，请 Codex“列出当前加载的全局规则来源，确认是否包含初学者沟通偏好”，并核对来源是目标设备上安装的文件。
-- 在技能列表中确认能找到本次安装的技能，并核对实际文件路径。圆桌可用“请用 $yuuu-san-roundtable 比较两个简单方案，只讨论”试用。技能导航可用“用 $yuuu-san-skill-router 推荐适合排查偶发卡顿的技能，只给建议”试用。人设策划可用前面的三个示例之一试用。
+- 在技能列表中确认能找到本次安装的技能，并核对实际文件路径。圆桌可用“请用 $yuuu-san-roundtable 比较两个简单方案，只讨论”试用。雨伞导航可用“用 $yuuu-san-skill-router 推荐适合排查偶发卡顿的技能，只给建议”试用。人设策划可用前面的三个示例之一试用。
 
 圆桌运行需要当前环境提供真实子代理能力；能找到技能不等于该环境能完成多代理讨论。没有该能力时，应明确说明限制，不能把单代理结果称为已完成圆桌。
 
